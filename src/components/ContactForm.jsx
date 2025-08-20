@@ -39,7 +39,7 @@ const ContactForm = () => {
       // EmailJS configuration
       const result = await emailjs.sendForm(
         'service_jkv4fga', // EmailJS service ID
-        'template_1eru0kc', // EmailJS template ID
+        'template_n2829xo', // EmailJS template ID
         form.current,
         'r3tCGci9LksyVBrez' // EmailJS public key
       )

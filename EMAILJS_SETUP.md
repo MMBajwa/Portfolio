@@ -43,7 +43,7 @@ Open `src/components/ContactForm.jsx` and replace these placeholders:
 ```javascript
 const result = await emailjs.sendForm(
   'service_abc123', // Replace with YOUR_SERVICE_ID
-  'template_xyz789', // Replace with YOUR_TEMPLATE_ID
+  'template_n2829xo', // Replace with YOUR_TEMPLATE_ID
   form.current,
   'user_abc123XYZ' // Replace with YOUR_PUBLIC_KEY
 )
