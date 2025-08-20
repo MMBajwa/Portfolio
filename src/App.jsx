@@ -232,7 +232,7 @@ const ProjectsSection = () => {
             {/* Cool Message Popup */}
             {showMessage && (
               <motion.div
-                className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 text-light-text dark:text-dark-text px-6 py-4 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 whitespace-nowrap"
+                className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 text-light-text dark:text-dark-text px-4 py-4 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-xs sm:max-w-sm md:max-w-md lg:whitespace-nowrap"
                 initial={{ opacity: 0, scale: 0.8, y: -10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.8, y: -10 }}
@@ -241,7 +241,7 @@ const ProjectsSection = () => {
                 <div className="relative">
                   {/* Arrow pointing up */}
                   <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 border-l border-t border-gray-200 dark:border-gray-700 rotate-45"></div>
-                  <p className="text-lg font-medium text-center">
+                  <p className="text-sm sm:text-base md:text-lg font-medium text-center">
                     📅 <span className="text-light-accent dark:text-dark-accent">Schedule a meeting</span> and you won't regret it! ✨
                   </p>
                 </div>
