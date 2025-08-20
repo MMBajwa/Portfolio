@@ -388,15 +388,22 @@ const ContactSection = () => {
                 Follow me
               </h3>
               <div className="flex gap-4">
-                {['GitHub', 'LinkedIn', 'Twitter'].map(social => (
+                {[
+                  { name: 'GitHub', url: 'https://github.com/MMBajwa', icon: '💻' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mmbajwa2626/', icon: '💼' },
+                  { name: 'Instagram', url: 'https://www.instagram.com/_themurtazababer/', icon: '📷' }
+                ].map(social => (
                   <motion.a
-                    key={social}
-                    href="#"
-                    className="bg-gradient-to-r from-light-accent to-light-muted dark:from-dark-accent dark:to-dark-neon text-white px-4 py-2 rounded-lg font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm"
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-light-accent to-light-muted dark:from-dark-accent dark:to-dark-neon text-white px-4 py-2 rounded-lg font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm flex items-center gap-2"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {social}
+                    <span>{social.icon}</span>
+                    {social.name}
                   </motion.a>
                 ))}
               </div>
