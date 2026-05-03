@@ -7,7 +7,7 @@ import Navigation from './components/Navigation'
 import TypingAnimation from './components/TypingAnimation'
 import ContactForm from './components/ContactForm'
 
-// Hero Section Component
+// Hero Section - Premium AI Landing Page
 const HeroSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -17,108 +17,90 @@ const HeroSection = () => {
   }
 
   return (
-    <section ref={ref} id="home" className="relative min-h-screen flex items-center justify-center bg-light-bg dark:bg-dark-bg transition-colors duration-500">
-      <div className="relative z-10 text-center px-6 max-w-4xl">
-        <motion.h1
-          className="text-5xl md:text-7xl font-heading font-bold text-light-text dark:text-dark-text mb-6"
-          initial={{ opacity: 0, y: 50 }}
+    <section
+      ref={ref}
+      id="home"
+      className="relative min-h-screen pt-20 flex items-center justify-center overflow-hidden"
+    >
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 -left-96 w-96 h-96 bg-gradient-ai rounded-full blur-3xl opacity-15" />
+        <div className="absolute bottom-1/4 -right-96 w-96 h-96 bg-gradient-ai rounded-full blur-3xl opacity-10" />
+      </div>
+
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        {/* Main Hero Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mb-8"
+        >
+          <h1 className="text-hero leading-tight mb-6 text-white">
+            <span className="block mb-2">Crafting Digital</span>
+            <span className="gradient-text block">Experiences</span>
+            <span className="block">That Matter</span>
+          </h1>
+        </motion.div>
+
+        {/* Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-lg md:text-xl text-dark-muted mb-12 max-w-3xl mx-auto leading-relaxed"
         >
-          Hi, I'm <span className="text-light-accent dark:text-dark-accent">Murtaza</span>
-        </motion.h1>
-        
+          I'm a frontend developer and AI enthusiast who builds stunning, performant web experiences. 
+          <span className="text-white"> From concept to deployment,</span> I transform ideas into elegant digital solutions.
+        </motion.p>
+
+        {/* CTA Buttons */}
         <motion.div
-          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 font-body h-8 flex justify-center items-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
-          I'm a <span className="text-light-accent dark:text-dark-accent font-medium ml-2">
-            <TypingAnimation texts={["Frontend Developer", "UI/UX Designer", "Problem Solver"]} />
-          </span>
-        </motion.div>
-        
-        <motion.p
-          className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12 font-body leading-relaxed"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          I design and build websites that feel <span className="text-light-muted dark:text-dark-neon font-medium">alive</span>.
-        </motion.p>
+          <motion.button
+            onClick={scrollToWork}
+            className="btn-premium btn-primary px-8 py-4 text-lg"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Explore My Work
+            <span className="ml-2">↓</span>
+          </motion.button>
 
-        <motion.button
-          onClick={scrollToWork}
-          className="bg-gradient-to-r from-light-accent to-light-muted dark:from-dark-accent dark:to-dark-neon text-white px-8 py-4 rounded-full text-lg font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          View My Work ✨
-        </motion.button>
-      </div>
-    </section>
-  )
-}
-
-// About Section Component
-const AboutSection = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  const skills = [
-    { name: 'React', icon: '⚛️' },
-    { name: 'PHP/MySQL', icon: '🐘' },
-    { name: 'Firebase', icon: '🔥' },
-    { name: 'Unity', icon: '🎮' },
-    { name: 'SEO', icon: '📈' }
-  ]
-
-  return (
-    <section ref={ref} id="about" className="py-20 px-6 bg-light-card dark:bg-dark-card transition-colors duration-500">
-      <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-4xl md:text-5xl font-heading font-bold text-center text-light-text dark:text-dark-text mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          About Me
-        </motion.h2>
-
-        <motion.div
-          className="max-w-3xl mx-auto text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-body">
-            I'm a computer science student who loves bringing ideas to life on the web. 
-            From sleek portfolios to complex backends, I experiment, learn, and build. 
-            <span className="text-light-accent dark:text-dark-accent font-medium"> I don't just code, I craft digital experiences.</span>
-          </p>
+          <motion.a
+            href="#contact"
+            className="px-8 py-4 rounded-lg font-semibold border border-dark-border text-white hover:bg-dark-card transition-all duration-300"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Let's Talk
+          </motion.a>
         </motion.div>
 
+        {/* Floating Cards Hint */}
         <motion.div
-          className="flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="flex items-center justify-center gap-8 pt-8 border-t border-dark-border/30"
         >
-          {skills.map((skill, index) => (
+          {[
+            { label: 'React', icon: '⚛️' },
+            { label: 'Design', icon: '🎨' },
+            { label: 'Performance', icon: '⚡' },
+          ].map((item, i) => (
             <motion.div
-              key={skill.name}
-              className="bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-md border border-gray-200 dark:border-gray-700 flex items-center gap-2 hover:scale-105 transition-all duration-300 hover:shadow-lg"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-              whileHover={{ y: -2 }}
+              key={item.label}
+              className="flex items-center gap-2 text-sm text-dark-muted"
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.8 + i * 0.1 }}
             >
-              <span className="text-xl">{skill.icon}</span>
-              <span className="text-light-text dark:text-dark-text font-medium">{skill.name}</span>
+              <span className="text-lg">{item.icon}</span>
+              {item.label}
             </motion.div>
           ))}
         </motion.div>
@@ -127,76 +109,151 @@ const AboutSection = () => {
   )
 }
 
-// Projects Section Component
-const ProjectsSection = () => {
+// About Section - Premium Cards
+const AboutSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
-  const [showMessage, setShowMessage] = useState(false)
 
-  const projects = [
-    {
-      title: 'Fanpage Blog Website',
-      description: 'A dynamic fan community platform with user interactions and content management',
-      tags: ['React', 'Node.js', 'Firebase'],
-      color: 'purple',
-      glowColor: 'rgba(139, 92, 246, 0.6)'
-    },
-    {
-      title: 'Weather Website',
-      description: 'Real-time weather application with forecasts and location-based data',
-      tags: ['React', 'Express.js', 'Weather API', 'Node.js'],
-      color: 'teal',
-      glowColor: 'rgba(20, 184, 166, 0.6)'
-    },
-    {
-      title: 'Business Dashboard',
-      description: 'Analytics dashboard for small businesses',
-      tags: ['Vue.js', 'Chart.js', 'Firebase'],
-      color: 'gold',
-      glowColor: 'rgba(245, 158, 11, 0.6)'
-    }
+  const highlights = [
+    { title: 'Frontend Expert', desc: 'React, Vite, Tailwind CSS', icon: '💻' },
+    { title: 'UI/UX Design', desc: 'Beautiful, intuitive interfaces', icon: '🎨' },
+    { title: 'Performance', desc: 'Lightning-fast applications', icon: '⚡' },
+    { title: 'Innovation', desc: 'Always learning, always growing', icon: '🚀' },
   ]
 
   return (
-    <section ref={ref} id="projects" className="py-20 px-6 bg-light-bg dark:bg-dark-bg transition-colors duration-500">
+    <section ref={ref} id="about" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-4xl md:text-5xl font-heading font-bold text-center text-light-text dark:text-dark-text mb-16"
-          initial={{ opacity: 0, y: 30 }}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          My Projects
-        </motion.h2>
+          <h2 className="text-section-title text-white mb-6">About Me</h2>
+          <p className="text-lg text-dark-muted max-w-3xl mx-auto leading-relaxed">
+            I'm a passionate developer with a keen eye for design and a commitment to clean code. 
+            I love solving complex problems and creating seamless user experiences.
+          </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        {/* Highlights Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {highlights.map((item, i) => (
+            <motion.div
+              key={item.title}
+              className="card-glass p-6 rounded-2xl"
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              whileHover={{ y: -5, boxShadow: '0 0 40px rgba(124, 92, 255, 0.3)' }}
+            >
+              <div className="text-4xl mb-4">{item.icon}</div>
+              <h3 className="text-white font-semibold mb-2">{item.title}</h3>
+              <p className="text-dark-muted text-sm">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Skills Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-20 p-8 card-glass rounded-2xl"
+        >
+          <h3 className="text-2xl font-bold text-white mb-8">Tech Stack</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {['React', 'Vite', 'Tailwind', 'JavaScript', 'Node.js', 'Firebase', 'Next.js', 'TypeScript', 'Git', 'Figma', 'SEO', 'PHP'].map((skill) => (
+              <motion.div
+                key={skill}
+                className="px-4 py-3 rounded-lg bg-dark-card border border-dark-border/50 text-center text-sm font-medium text-white"
+                whileHover={{ scale: 1.05, borderColor: 'rgba(124, 92, 255, 0.5)' }}
+              >
+                {skill}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+// Projects Section - Floating Cards
+const ProjectsSection = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
+  const projects = [
+    {
+      title: 'AI Chat Interface',
+      description: 'Real-time AI-powered chat application with message history and smart suggestions',
+      tags: ['React', 'WebSocket', 'AI API', 'Tailwind'],
+      icon: '🤖',
+    },
+    {
+      title: 'Analytics Dashboard',
+      description: 'Comprehensive business analytics with real-time data visualization',
+      tags: ['React', 'Chart.js', 'Firebase', 'Node.js'],
+      icon: '📊',
+    },
+    {
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce solution with payment integration and inventory management',
+      tags: ['Next.js', 'Stripe', 'PostgreSQL', 'Tailwind'],
+      icon: '🛍️',
+    },
+  ]
+
+  return (
+    <section ref={ref} id="projects" className="relative py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-section-title text-white mb-6">Featured Projects</h2>
+          <p className="text-lg text-dark-muted max-w-3xl mx-auto">
+            A selection of projects showcasing my expertise in building modern, scalable web applications
+          </p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-700 hover:scale-105 transition-all duration-500 cursor-pointer"
-              style={{
-                filter: 'grayscale(100%)',
-              }}
-              initial={{ opacity: 0, y: 50 }}
+              className="card-glass p-8 rounded-2xl group cursor-pointer overflow-hidden"
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
               whileHover={{
-                filter: 'grayscale(0%)',
-                boxShadow: `0 20px 40px ${project.glowColor}`,
+                y: -8,
+                boxShadow: '0 20px 60px rgba(124, 92, 255, 0.3)',
               }}
             >
-              <div className="p-6">
-                <h3 className="text-xl font-heading font-semibold text-light-text dark:text-dark-text mb-3">
+              {/* Glow on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-purple-500/10 to-cyan-500/10 transition-opacity duration-300" />
+
+              <div className="relative z-10">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {project.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:gradient-text transition-all duration-300">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 font-body">
+                <p className="text-dark-muted mb-6 leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map(tag => (
+                  {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium"
+                      className="px-3 py-1 text-xs font-medium rounded-full bg-dark-card border border-dark-border/50 text-white hover:border-purple-500/50 transition-all"
                     >
                       {tag}
                     </span>
@@ -206,55 +263,28 @@ const ProjectsSection = () => {
             </motion.div>
           ))}
         </div>
-        
-        {/* Cool Oval Button with Message */}
-        <motion.div 
-          className="flex justify-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
+
+        {/* View All CTA */}
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <div className="relative">
-            <motion.button
-              onClick={() => setShowMessage(!showMessage)}
-              className="bg-gradient-to-r from-light-accent to-light-muted dark:from-dark-accent dark:to-dark-neon text-white px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 hover:scale-105"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-lg font-medium">More Projects</span>
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
-                <div className="w-2 h-2 bg-white rounded-full opacity-60"></div>
-                <div className="w-2 h-2 bg-white rounded-full opacity-40"></div>
-              </div>
-            </motion.button>
-            
-            {/* Cool Message Popup */}
-            {showMessage && (
-              <motion.div
-                className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 text-light-text dark:text-dark-text px-4 py-4 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-xs sm:max-w-sm md:max-w-md lg:whitespace-nowrap"
-                initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: -10 }}
-                transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
-              >
-                <div className="relative">
-                  {/* Arrow pointing up */}
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white dark:bg-gray-800 border-l border-t border-gray-200 dark:border-gray-700 rotate-45"></div>
-                  <p className="text-sm sm:text-base md:text-lg font-medium text-center">
-                    📅 <span className="text-light-accent dark:text-dark-accent">Schedule a meeting</span> and you won't regret it! ✨
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </div>
+          <motion.button
+            className="btn-premium btn-primary px-8 py-4 text-lg"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View All Projects
+          </motion.button>
         </motion.div>
       </div>
     </section>
   )
 }
 
-// Services Section Component
+// Services Section
 const ServicesSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -262,64 +292,54 @@ const ServicesSection = () => {
   const services = [
     {
       title: 'Web Development',
-      description: 'Modern, responsive websites built with the latest technologies',
-      icon: '💻'
-    },
-    {
-      title: 'Backend & Databases',
-      description: 'Robust server-side solutions and database architecture',
-      icon: '🔧'
+      description: 'Building fast, responsive websites with modern technologies',
+      icon: '💻',
     },
     {
       title: 'UI/UX Design',
-      description: 'Beautiful, intuitive interfaces that users love',
-      icon: '🎨'
+      description: 'Crafting beautiful interfaces that users love',
+      icon: '🎨',
     },
     {
-      title: 'SEO & Digital Strategy',
-      description: 'Optimize your online presence and reach more customers',
-      icon: '📈'
-    }
+      title: 'Performance Optimization',
+      description: 'Ensuring your site loads lightning-fast',
+      icon: '⚡',
+    },
+    {
+      title: 'AI Integration',
+      description: 'Implementing cutting-edge AI features in your apps',
+      icon: '🤖',
+    },
   ]
 
   return (
-    <section ref={ref} id="services" className="py-20 px-6 bg-light-card dark:bg-dark-card transition-colors duration-500">
+    <section ref={ref} id="services" className="relative py-32 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          className="text-4xl md:text-5xl font-heading font-bold text-center text-light-text dark:text-dark-text mb-4"
-          initial={{ opacity: 0, y: 30 }}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          What I can do for you
-        </motion.h2>
+          <h2 className="text-section-title text-white mb-6">What I Offer</h2>
+          <p className="text-lg text-dark-muted max-w-3xl mx-auto">
+            Comprehensive services to bring your vision to life
+          </p>
+        </motion.div>
 
-        <motion.p
-          className="text-center text-gray-600 dark:text-gray-300 mb-16 font-body"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Here's how I can help bring your ideas to life
-        </motion.p>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service, i) => (
             <motion.div
               key={service.title}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:scale-105 transition-all duration-300 hover:shadow-xl text-center"
-              initial={{ opacity: 0, y: 30 }}
+              className="card-glass p-6 rounded-2xl text-center"
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
-              whileHover={{ y: -5 }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              whileHover={{ y: -5, boxShadow: '0 0 40px rgba(124, 92, 255, 0.3)' }}
             >
-              <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-lg font-heading font-semibold text-light-text dark:text-dark-text mb-3">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 font-body text-sm">
-                {service.description}
-              </p>
+              <div className="text-5xl mb-4">{service.icon}</div>
+              <h3 className="text-lg font-bold text-white mb-3">{service.title}</h3>
+              <p className="text-dark-muted text-sm leading-relaxed">{service.description}</p>
             </motion.div>
           ))}
         </div>
@@ -328,86 +348,96 @@ const ServicesSection = () => {
   )
 }
 
-// Contact Section Component
+// Contact Section
 const ContactSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
   return (
-    <section ref={ref} id="contact" className="py-20 px-6 bg-light-bg dark:bg-dark-bg transition-colors duration-500">
-      <div className="max-w-4xl mx-auto">
-        <motion.h2
-          className="text-4xl md:text-5xl font-heading font-bold text-center text-light-text dark:text-dark-text mb-16"
-          initial={{ opacity: 0, y: 30 }}
+    <section ref={ref} id="contact" className="relative py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          Let's work together
-        </motion.h2>
+          <h2 className="text-section-title text-white mb-6">Let's Work Together</h2>
+          <p className="text-lg text-dark-muted max-w-3xl mx-auto">
+            Have a project in mind? I'd love to hear about it. Get in touch and let's create something amazing together.
+          </p>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
-            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
-            initial={{ opacity: 0, x: -30 }}
+            className="card-glass p-8 rounded-2xl"
+            initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <ContactForm />
           </motion.div>
 
-          {/* Contact Info & Social */}
+          {/* Contact Info */}
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: 30 }}
+            className="space-y-6"
+            initial={{ opacity: 0, x: 40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <h3 className="text-xl font-heading font-semibold text-light-text dark:text-dark-text mb-4">
-                Get in touch
-              </h3>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">📧</span>
-                  <span className="text-gray-600 dark:text-gray-300">businessmypersonalbajwa@gmail.com</span>
+            {[
+              { icon: '📧', label: 'Email', value: 'businessmypersonalbajwa@gmail.com', href: 'mailto:businessmypersonalbajwa@gmail.com' },
+              { icon: '📱', label: 'Phone', value: '+92 308 0143575', href: 'tel:+923080143575' },
+              { icon: '📍', label: 'Location', value: 'Lahore, Punjab, Pakistan', href: null },
+            ].map((item, i) => (
+              <motion.div
+                key={item.label}
+                className="card-glass p-6 rounded-xl"
+                whileHover={{ y: -3 }}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="text-4xl">{item.icon}</div>
+                  <div>
+                    <p className="text-dark-muted text-sm mb-1">{item.label}</p>
+                    {item.href ? (
+                      <a href={item.href} className="text-white font-semibold hover:gradient-text transition-all">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-white font-semibold">{item.value}</p>
+                    )}
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">📱</span>
-                  <span className="text-gray-600 dark:text-gray-300">+923080143575</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">📍</span>
-                  <span className="text-gray-600 dark:text-gray-300">Lahore, Punjab</span>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
 
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <h3 className="text-xl font-heading font-semibold text-light-text dark:text-dark-text mb-4">
-                Follow me
-              </h3>
+            {/* Social Links */}
+            <motion.div
+              className="card-glass p-6 rounded-xl"
+              whileHover={{ y: -3 }}
+            >
+              <h3 className="text-white font-bold mb-4">Follow Me</h3>
               <div className="flex gap-4">
                 {[
                   { name: 'GitHub', url: 'https://github.com/MMBajwa', icon: '💻' },
                   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mmbajwa2626/', icon: '💼' },
-                  { name: 'Instagram', url: 'https://www.instagram.com/_themurtazababer/', icon: '📷' }
-                ].map(social => (
+                  { name: 'Instagram', url: 'https://www.instagram.com/_themurtazababer/', icon: '📷' },
+                ].map((social) => (
                   <motion.a
                     key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-light-accent to-light-muted dark:from-dark-accent dark:to-dark-neon text-white px-4 py-2 rounded-lg font-medium hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm flex items-center gap-2"
-                    whileHover={{ y: -2 }}
+                    className="w-12 h-12 rounded-lg bg-gradient-ai flex items-center justify-center text-xl hover:shadow-glow-lg transition-all"
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span>{social.icon}</span>
-                    {social.name}
+                    {social.icon}
                   </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -419,11 +449,11 @@ const ContactSection = () => {
 function App() {
   return (
     <ThemeProvider>
-      <div className="relative min-h-screen bg-light-bg dark:bg-dark-bg transition-colors duration-500">
+      <div className="relative min-h-screen bg-dark-bg text-white overflow-hidden">
         <AnimatedBackground />
         <Navigation />
         <ThemeToggle />
-        
+
         <main className="relative z-10">
           <HeroSection />
           <AboutSection />
@@ -431,13 +461,21 @@ function App() {
           <ServicesSection />
           <ContactSection />
         </main>
-        
-        <footer className="relative z-10 py-8 text-center text-gray-600 dark:text-gray-400 bg-light-card dark:bg-dark-card border-t border-gray-200 dark:border-gray-700">
-          <p>&copy; 2024 Murtaza. Built with ❤️ and lots of coffee.</p>
+
+        {/* Footer */}
+        <footer className="relative z-10 py-12 px-6 border-t border-dark-border/30 bg-dark-bg/50 backdrop-blur-sm">
+          <div className="max-w-6xl mx-auto text-center">
+            <p className="text-dark-muted mb-4">
+              © 2026 Murtaza Muhammad. Built with <span className="gradient-text">✨ premium dark AI aesthetics</span>
+            </p>
+            <p className="text-sm text-dark-muted/70">
+              Crafted with React, Vite, Tailwind CSS & Framer Motion
+            </p>
+          </div>
         </footer>
       </div>
     </ThemeProvider>
   )
 }
 
-export default App 
+export default App
